@@ -21,10 +21,17 @@ public class SysTrayApp : Form
         };
 
         trayIcon.DoubleClick += TrayIcon_DoubleClick;
+        trayIcon.MouseUp += TrayIcon_MouseUp;
 
         UpdateTrayMenu();
     }
-
+    private void TrayIcon_MouseUp(object sender, MouseEventArgs e)
+    {
+        if (e.Button == MouseButtons.Right)
+        {
+            UpdateTrayMenu();
+        }
+    }
     private void UpdateTrayMenu()
     {
         trayMenu.Items.Clear();
